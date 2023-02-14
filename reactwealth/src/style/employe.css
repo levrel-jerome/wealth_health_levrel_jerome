@@ -1,0 +1,10 @@
+.title-employe {
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 25px;
+}
