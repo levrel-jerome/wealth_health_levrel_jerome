@@ -84,7 +84,7 @@ const headCells = [
     label: 'Department',
   },
   {
-    id: 'dateofbirth',
+    id: 'birthday',
     numeric: true,
     disablePadding: false,
     label: 'Date Of Birth',
