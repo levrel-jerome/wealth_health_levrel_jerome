@@ -1,178 +1,5 @@
-/*
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import { Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import { useEffect } from 'react';
-
-
-const columns = [
-
-    { id: 'firstname', label: 'First name', minWidth: 50 },
-    { id: 'lastname', label: 'Last name', minWidth: 50 },
-    {
-      id: 'startdate',
-      label: 'Start date',
-      minWidth: 50,
-      align: 'right',
-    },
-    {
-      id: 'department',
-      label: 'Department',
-      minWidth: 50,
-      align: 'right',
-    },
-    {
-      id: 'street',
-      label: 'Street',
-      minWidth: 50,
-      align: 'right',
-    },
-    {
-      id: 'city',
-      label: 'City',
-      minWidth: 50,
-      align: 'right',
-    },
-    {
-      id: 'state',
-      label: 'State',
-      minWidth: 50,
-      align: 'right',
-    },
-    {
-        id: 'birthday',
-        label: 'Date of birth',
-        minWidth: 50,
-        align: 'right',
-      }
-  ];
-  
- function Employe() {
-
-  const employees = JSON.parse(localStorage.getItem('employe')) || [];
-
-    const [data, setData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-
-    useEffect(() => {
-      setData(employees)
-    }, [])
-
-    const sortTab = () => {
-
-    }
-
-    const handleChangeTab = (e) => {
-      let value = e.target.value
-      setSearchTerm(value)
-    }
-
-
-  
-
-
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  
-    const handleChangePage = (event, newPage) => {
-      setPage(newPage);
-    };
-  
-    const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(+event.target.value);
-      setPage(0);
-    };
-  
-    return (
-      <>
-
-      <Typography className='title-employe' marginBottom={'50px'} variant="h2">
-            Create Employee
-      </Typography>
-      <Paper sx={{ width: '60%', margin: 'auto', overflow: 'hidden', marginBottom:'50px' }}>
-      <Box
-      component="form"
-      noValidate
-      autoComplete="off"
-    >
-      <TextField
-      id="outlined-basic" 
-      label="Search" 
-      onChange={handleChangeTab}
-      variant="outlined" />
-    </Box>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {employees
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .filter((row) => {
-                  return row.firstname.includes(searchTerm) || row.lastname.includes(searchTerm) || row.birthday.includes(searchTerm)
-                })
-                .map((row, i) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={i}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={employees.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-      <Button sx={{ display: 'flex', width: '10%', margin: 'auto'}} variant="contained" component={NavLink} className="home" to="/">Home</Button>
-      </>
-    );
-  }
-
-export default Employe;*/
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -188,20 +15,9 @@ import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { useState } from 'react';
 import { TextField } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
-/*function createData(firstname, lastname, startdate, department, dateofbirth, street, city, state, zipcode) {
-  return {
-    firstname,
-    lastname,
-    startdate,
-    department,
-    dateofbirth,
-    street,
-    city,
-    state,
-    zipcode
-  };
-}*/
 const rows = JSON.parse(localStorage.getItem('employe')) || [];
 
 console.log(rows)
@@ -391,21 +207,21 @@ export default function EnhancedTable() {
   };
 
   return (
-    <Box sx={{ width: '80%' }}>
+    <Box sx={{ width: '80%', margin: 'auto' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
       <Box
       component="form"
       noValidate
       autoComplete="off"
     >
-      <TextField
-      id="outlined-basic" 
-      label="Search" 
-      onChange={handleChangeTab}
-      variant="outlined" />
     </Box>
         <EnhancedTableToolbar/>
         <TableContainer>
+        <TextField
+              id="outlined-basic" 
+              label="Search" 
+              onChange={handleChangeTab}
+              variant="outlined" />
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
@@ -454,6 +270,7 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <Button sx={{ display: 'flex', width: '10%', margin: 'auto'}} variant="contained" component={NavLink} className="home" to="/">Home</Button>
     </Box>
   );
 }
